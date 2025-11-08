@@ -1,3 +1,5 @@
+pydantic
 sqlalchemy
-fastapi
+fastapi[all]
 uvicorn
+httpx

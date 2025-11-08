@@ -23,7 +23,7 @@ class TagBase(BaseModel):
         
 class LinkBase(BaseModel):
     imdbId: Optional[str]
-    tmdbId: Optional[str]
+    tmdbId: Optional[int]
     class Config:
         orm_mode = True
         
@@ -39,9 +39,13 @@ class MovieBase(BaseModel):
         orm_mode = True
         
 class MovieDetailed(MovieBase):
+    moviesId: int
     ratings: List[RatingBase] = []
     tags: List[TagBase] = []
     links: Optional[LinkBase] = None
+    
+    class Config:
+        orm_mode = True
 
 # --- Schemas of list of movies without details ---
 
@@ -75,8 +79,8 @@ class TagSimple(BaseModel):
         
 class LinkSimple(BaseModel):
     moviesId: int
-    imdbId: Optional[int]
-    tmdbId: Optional[str]
+    imdbId: Optional[str]
+    tmdbId: Optional[int]
     
     class Config:
         orm_mode = True

@@ -6,9 +6,9 @@ import models
 
 # --- Films---
 
-def get_movie(db:Session, movie_id: int) -> Optional[models.Movie]:
+def get_movie(db:Session, movies_Id: int) -> Optional[models.Movie]:
     """ Retrieve a movie by its ID """
-    return db.query(models.Movie).filter(models.Movie.moviesid == movie_id).first()
+    return db.query(models.Movie).filter(models.Movie.moviesId == movies_Id).first()
 
 def get_movies(db: Session, skip: int = 0, limit: int = 100, title: str = None, genre: str = None):
     """ Retrieve multiple movies with optional filters for title and genre """
@@ -21,51 +21,51 @@ def get_movies(db: Session, skip: int = 0, limit: int = 100, title: str = None, 
         
     return query.offset(skip).limit(limit).all() 
 
-def get_rating(db: Session, user_id: int, movie_id: int) -> Optional[models.Rating]:
+def get_rating(db: Session, user_Id: int, movies_Id: int) -> Optional[models.Rating]:
     """ Retrieve a rating by user ID and movie ID """
     return db.query(models.Rating).filter(
-        models.Rating.userId == user_id,
-        models.Rating.moviesId == movie_id
+        models.Rating.userId == user_Id,
+        models.Rating.moviesId == movies_Id
     ).first()
     
-def get_ratings(db: Session, skip: int = 0, limit: int = 100, movie_id: int = None, user_id: int = None, min_rating: float = None):
+def get_ratings(db: Session, skip: int = 0, limit: int = 100, movies_Id: int = None, user_Id: int = None, min_rating: float = None):
     """ Retrieve multiple ratings """
     query = db.query(models.Rating)
     
-    if movie_id:
-        query = query.filter(models.Rating.moviesId == movie_id)
-    if user_id:
-        query = query.filter(models.Rating.userId == user_id)
+    if movies_Id:
+        query = query.filter(models.Rating.moviesId == movies_Id)
+    if user_Id:
+        query = query.filter(models.Rating.userId == user_Id)
     if min_rating:
         query = query.filter(models.Rating.rating >= min_rating)
     return query.offset(skip).limit(limit).all()
 
 # ---Tags---
 
-def get_tag(db: Session, user_id: int, movie_id: int, tag_text: str) -> Optional[models.Tag]:
+def get_tag(db: Session, user_Id: int, movies_Id: int, tag_text: str) -> Optional[models.Tag]:
     """ Retrieve a tag by user ID, movie ID, and tag text """
     return db.query(models.Tag).filter(
-        models.Tag.userId == user_id,
-        models.Tag.moviesId == movie_id,
+        models.Tag.userId == user_Id,
+        models.Tag.moviesId == movies_Id,
         models.Tag.tag == tag_text
     ).first()
     
-def get_tags(db: Session, skip: int = 0, limit: int = 100, movie_id: Optional[int] = None, user_id: Optional[int] = None):
+def get_tags(db: Session, skip: int = 0, limit: int = 100, movies_Id: Optional[int] = None, user_Id: Optional[int] = None):
     """ Retrieve multiple tags """
     query = db.query(models.Tag)
     
-    if movie_id:
-        query = query.filter(models.Tag.moviesId == movie_id)
-    if user_id:
-        query = query.filter(models.Tag.userId == user_id)
+    if movies_Id:
+        query = query.filter(models.Tag.moviesId == movies_Id)
+    if user_Id:
+        query = query.filter(models.Tag.userId == user_Id)
         
     return query.offset(skip).limit(limit).all()
 
 # --- Links---
 
-def get_link(db: Session, movie_id: int) -> Optional[models.Link]:
+def get_link(db: Session, movies_Id: int) -> Optional[models.Link]:
     """ Retrieve a link by movie ID """
-    return db.query(models.Link).filter(models.Link.moviesId == movie_id).first()
+    return db.query(models.Link).filter(models.Link.moviesId == movies_Id).first()
 
 def get_links(db: Session, skip: int = 0, limit: int = 100):
     """ Retrieve multiple links """
