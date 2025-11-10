@@ -1,0 +1,23 @@
+# Python runing files
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs files
+
+*.log 
+
+# Local environment configuration file
+.env
+
+# Git repository
+.git 
+.gitignore
+
+# System file
+.DS_Store
+
+# Cache pip or venv
+venv/
+.venv/
+pip-wheel-metadata/

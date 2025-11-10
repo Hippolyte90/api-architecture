@@ -1,0 +1,2 @@
+Here is the commend to get the structure of a repository:
+tree --prune -I 'build|*.egg.info|__pycache__'

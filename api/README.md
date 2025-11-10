@@ -14,7 +14,7 @@ Welcome into API **MovieLens** - an API RESTful developped with **FastAPI** to e
 
 ## Requirements
 
-- Python >= 0.12
+- Python >= 3.12
 - An support HTTP as `httpx` or `requests`
   
 Quickly installation of `httpx`:
