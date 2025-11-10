@@ -3,3 +3,6 @@ sqlalchemy
 fastapi[all]
 uvicorn
 httpx
+build 
+twine
+hmoviessdk #(my package)
